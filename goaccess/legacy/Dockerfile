@@ -20,6 +20,11 @@ RUN apk update && \
     apk del $build_deps && \
     rm -rf /var/cache/apk/* /tmp/goaccess/* /goaccess
 
+RUN apk add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" >  /etc/timezone && \
+    apk del tzdata
+
 # Install language pack
 RUN apk --no-cache add ca-certificates wget && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \

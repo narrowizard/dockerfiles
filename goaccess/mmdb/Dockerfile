@@ -38,6 +38,11 @@ RUN cat /locale.md | xargs -i /usr/glibc-compat/bin/localedef -i {} -f UTF-8 {}.
 ENV LANG=zh_CN.UTF-8 \
     LANGUAGE=zh_CN.UTF-8
 
+RUN apk add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" >  /etc/timezone && \
+    apk del tzdata
+
 VOLUME /srv/data
 VOLUME /srv/logs
 VOLUME /srv/report
