@@ -15,4 +15,6 @@ RUN rm -rf /etc/apk/repositories && \
     && docker-php-ext-install zip \
     && rm -rf /var/cache/apk/* 
     
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+
 EXPOSE 9000
