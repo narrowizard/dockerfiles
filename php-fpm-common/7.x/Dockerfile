@@ -10,6 +10,7 @@ RUN rm -rf /etc/apk/repositories && \
     zlib-dev \
     libzip-dev \
     libbsd \
+    tzdata \
     && docker-php-ext-install iconv mysqli pdo pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \ 
