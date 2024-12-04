@@ -6,6 +6,9 @@ RUN adduser -D git && \
     mkdir /home/git/.ssh && \
     chown -R git:git /home/git/.ssh
 
+# Generate SSH host keys
+RUN ssh-keygen -A
+
 VOLUME /home/git
 
 EXPOSE 22
